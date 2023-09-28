@@ -6,8 +6,7 @@ import { checkGuess } from '../../game-helpers.js'
 function Guess({ value, answer }) {
     
     const result = checkGuess(value, answer)
-    
-    
+        
     function Cell({ letter, status }) {
         
         const className = status ? `cell ${status}` : 'cell'
@@ -21,7 +20,7 @@ function Guess({ value, answer }) {
     
     return (
         <p className="guess">
-            {range(5).map(num => (
+            {range(5).map(num => (                
                 <Cell 
                     key={num} 
                     letter={result ? result[num].letter : undefined}
