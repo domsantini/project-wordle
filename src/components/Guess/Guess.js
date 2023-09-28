@@ -5,12 +5,28 @@ import { checkGuess } from '../../game-helpers.js'
 
 function Guess({ value, answer }) {
     
+    const result = checkGuess(value, answer)
+    
+    
+    function Cell({ letter, status }) {
+        
+        const className = status ? `cell ${status}` : 'cell'
+        
+        return (
+            <span className={className}>
+                {letter}
+            </span>
+        )
+    }
+    
     return (
         <p className="guess">
             {range(5).map(num => (
-                <span key={num} className={`cell`}>
-                    {value ? value[num] : ''}
-                </span>
+                <Cell 
+                    key={num} 
+                    letter={result ? result[num].letter : undefined}
+                    status={result ? result[num].status : undefined}
+                />
             ))}
         </p>
     );
